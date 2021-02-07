@@ -13,15 +13,21 @@ func TemplateGenerator(p string) *Template {
 	return &template
 }
 
+//typescript
 func (t *Template) TypescriptExpress() {
 	templates.CreateTypescriptExpress(t.project)
 }
 
+//javascript
+func (t *Template) JavascriptExpress() {
+	templates.CreateJavascriptExpress(t.project)
+}
+
 func (t *Template) Compare(s string) {
-	if s == "ex" {
+	if s == "typescript-express" {
 		t.TypescriptExpress()
 	} else if s == "javascript-express" {
-
+		t.JavascriptExpress()
 	} else if s == "typescript-gql" {
 
 	} else if s == "typescript-mongoose" {

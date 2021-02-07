@@ -8,7 +8,7 @@ import (
 	"github.com/lucabecci/project-generator/pkg/dependencies"
 )
 
-func InitializeTS(p string) ([]byte, error) {
+func InitializeJS(p string) ([]byte, error) {
 	fmt.Println("Yarn build...")
 	cmd := exec.Command("yarn", "init", "-y")
 	cmd.Dir = "./" + p
@@ -19,7 +19,7 @@ func InitializeTS(p string) ([]byte, error) {
 	return out, nil
 }
 
-func StructureTS(p string) error {
+func StructureJS(p string) error {
 	fmt.Println("Structure build...")
 	cmd := exec.Command(
 		"touch",
@@ -51,15 +51,15 @@ func StructureTS(p string) error {
 		return err
 	}
 	fmt.Println("API filesbuild...")
-	//files ts
+	//files js
 	cmd = exec.Command(
 		"touch",
-		"index.ts",
-		"controllers/index.controller.ts",
-		"routes/index.routes.ts",
-		"database/database.ts",
-		"middlewares/auth.ts",
-		"helpers/checks.ts",
+		"index.js",
+		"controllers/index.controller.js",
+		"routes/index.routes.js",
+		"database/database.js",
+		"middlewares/auth.js",
+		"helpers/checks.js",
 	)
 	cmd.Dir = "./" + p + "/src"
 	err = cmd.Run()
@@ -69,12 +69,12 @@ func StructureTS(p string) error {
 	return nil
 }
 
-func DependenciesTS(p string, t string) ([]byte, error) {
+func DependenciesJS(p string, t string) ([]byte, error) {
 	fmt.Println("Adding dependencies...")
 	var out []byte
 	var err error
-	if t == "ts-express" {
-		out, err = dependencies.DependenciesTsExpress(p)
+	if t == "js-express" {
+		out, err = dependencies.DependenciesJsExpress(p)
 		if err != nil {
 			return []byte{}, err
 		}
@@ -82,12 +82,12 @@ func DependenciesTS(p string, t string) ([]byte, error) {
 	return out, nil
 }
 
-func DevDependenciesTS(p string, t string) ([]byte, error) {
+func DevDependenciesJS(p string, t string) ([]byte, error) {
 	fmt.Println("Adding dev-dependencies...")
 	var out []byte
 	var err error
-	if t == "ts-express" {
-		out, err = dependencies.DevDependenciesTsExpress(p)
+	if t == "js-express" {
+		out, err = dependencies.DevDependenciesJsExpress(p)
 		if err != nil {
 			return []byte{}, err
 		}
@@ -95,24 +95,13 @@ func DevDependenciesTS(p string, t string) ([]byte, error) {
 	return out, nil
 }
 
-func InitTsConfig(p string) ([]byte, error) {
-	fmt.Println("Creating a ts config...")
-	cmd := exec.Command("tsc", "--init")
-	cmd.Dir = "./" + p
-	out, err := cmd.Output()
-	if err != nil {
-		return []byte{}, err
-	}
-	return out, nil
-}
-
-func AppDataTS(p string) error {
+func AppDataJS(p string) error {
 	fmt.Println("Configuring the app server...")
-	content, err := ioutil.ReadFile("./pkg/file_information/indexTS.txt")
+	content, err := ioutil.ReadFile("./pkg/file_information/indexJS.txt")
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(p+"/src/index.ts", content, 0777)
+	err = ioutil.WriteFile(p+"/src/index.js", content, 0777)
 	if err != nil {
 		return err
 	}

@@ -19,13 +19,13 @@ func CreateTypescriptExpress(p string) {
 		fmt.Println(Red(string(err.Error())))
 	}
 
-	prod, err := pkg.Dependencies(p, "ts-express")
+	prod, err := pkg.DependenciesTS(p, "ts-express")
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
 	fmt.Println(Green(string(prod)))
 
-	dev, err := pkg.DevDependencies(p, "ts-express")
+	dev, err := pkg.DevDependenciesTS(p, "ts-express")
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
@@ -41,7 +41,7 @@ func CreateTypescriptExpress(p string) {
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
-	err = pkg.AppData(p)
+	err = pkg.AppDataTS(p)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
