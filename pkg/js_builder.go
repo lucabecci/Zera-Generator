@@ -73,8 +73,13 @@ func DependenciesJS(p string, t string) ([]byte, error) {
 	fmt.Println("Adding dependencies...")
 	var out []byte
 	var err error
-	if t == "js-express" {
-		out, err = dependencies.DependenciesJsExpress(p)
+	if t == "javascript-express" {
+		out, err = dependencies.DependenciesJsExpress(p, t)
+		if err != nil {
+			return []byte{}, err
+		}
+	} else if t == "javascript-mongoose" {
+		out, err = dependencies.DependenciesJsExpress(p, t)
 		if err != nil {
 			return []byte{}, err
 		}
@@ -86,8 +91,8 @@ func DevDependenciesJS(p string, t string) ([]byte, error) {
 	fmt.Println("Adding dev-dependencies...")
 	var out []byte
 	var err error
-	if t == "js-express" {
-		out, err = dependencies.DevDependenciesJsExpress(p)
+	if t == "javascript-express" {
+		out, err = dependencies.DevDependenciesJsExpress(p, t)
 		if err != nil {
 			return []byte{}, err
 		}

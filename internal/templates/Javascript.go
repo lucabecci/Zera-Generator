@@ -7,7 +7,7 @@ import (
 	"github.com/lucabecci/project-generator/pkg"
 )
 
-func CreateJavascriptExpress(p string) {
+func CreateJavascriptProject(p string, t string) {
 	build, err := pkg.InitializeJS(p)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
@@ -19,13 +19,13 @@ func CreateJavascriptExpress(p string) {
 		fmt.Println(Red(string(err.Error())))
 	}
 
-	prod, err := pkg.DependenciesJS(p, "js-express")
+	prod, err := pkg.DependenciesJS(p, t)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
 	fmt.Println(Green(string(prod)))
 
-	dev, err := pkg.DevDependenciesJS(p, "js-express")
+	dev, err := pkg.DevDependenciesJS(p, t)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
@@ -39,8 +39,4 @@ func CreateJavascriptExpress(p string) {
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
-}
-
-func CreateJavascriptMongoose() {
-	fmt.Println("JS-MONGOOSE")
 }

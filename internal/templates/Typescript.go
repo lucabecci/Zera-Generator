@@ -7,7 +7,7 @@ import (
 	"github.com/lucabecci/project-generator/pkg"
 )
 
-func CreateTypescriptExpress(p string) {
+func CreateTypescriptProject(p string, t string) {
 	build, err := pkg.InitializeTS(p)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
@@ -19,13 +19,13 @@ func CreateTypescriptExpress(p string) {
 		fmt.Println(Red(string(err.Error())))
 	}
 
-	prod, err := pkg.DependenciesTS(p, "ts-express")
+	prod, err := pkg.DependenciesTS(p, t)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
 	fmt.Println(Green(string(prod)))
 
-	dev, err := pkg.DevDependenciesTS(p, "ts-express")
+	dev, err := pkg.DevDependenciesTS(p, t)
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
@@ -45,9 +45,4 @@ func CreateTypescriptExpress(p string) {
 	if err != nil {
 		fmt.Println(Red(string(err.Error())))
 	}
-
-}
-
-func CreateTypescriptGQL() {
-	fmt.Println("TS-GQL")
 }

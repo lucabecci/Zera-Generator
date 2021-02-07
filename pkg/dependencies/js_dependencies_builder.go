@@ -2,15 +2,18 @@ package dependencies
 
 import "os/exec"
 
-func DependenciesJsExpress(p string) ([]byte, error) {
-	cmd := exec.Command(
-		"yarn",
-		"add",
-		"express",
-		"morgan",
-		"cors",
-		"dotenv",
-	)
+func DependenciesJsExpress(p string, t string) ([]byte, error) {
+	cmd := exec.Command("null")
+	if t == "javascript-express" {
+		cmd = exec.Command(
+			"yarn",
+			"add",
+			"express",
+			"morgan",
+			"cors",
+			"dotenv",
+		)
+	}
 	cmd.Dir = "./" + p
 	out, err := cmd.Output()
 	if err != nil {
@@ -19,7 +22,7 @@ func DependenciesJsExpress(p string) ([]byte, error) {
 	return out, nil
 }
 
-func DevDependenciesJsExpress(p string) ([]byte, error) {
+func DevDependenciesJsExpress(p string, t string) ([]byte, error) {
 	cmd := exec.Command(
 		"yarn",
 		"add",
