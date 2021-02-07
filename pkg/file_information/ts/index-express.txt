@@ -1,0 +1,42 @@
+import express, { Application, Response } from 'express'
+import morgan from 'morgan'
+import cors from 'cors'
+class App{
+    private _app: Application
+    constructor(){
+        this._app = express()
+
+        this.initConfig()
+        this.initRoutes()
+    }
+
+    private initConfig(): void{
+        this._app.use(express.urlencoded({extended: false}))
+        this._app.use(express.json())
+        this._app.use(morgan("dev"))
+        this._app.use(cors({
+            credentials: true
+        }))
+    }
+
+    private initRoutes(): void{
+        this._app.get('/', (_, res: Response) => {
+            res.status(200).json({
+                message: "Index path of the project",
+                builder: "Project Generator",
+                url_builder: "https://github.com/lucabecci/Project-Generator",
+                creator: "Luca Becci || Fullstack Developer || Argentina"
+            })
+        })
+    }
+
+    public run(): void{
+        this._app.listen(4000, () => {
+            console.log("Server on PORT", 4000)
+        })
+    }
+}
+
+
+const app = new App
+app.run()

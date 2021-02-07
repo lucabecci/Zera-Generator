@@ -100,11 +100,21 @@ func DevDependenciesJS(p string, t string) ([]byte, error) {
 	return out, nil
 }
 
-func AppDataJS(p string) error {
+func AppDataJS(p string, t string) error {
+	var content []byte
+	var err error
+
 	fmt.Println("Configuring the app server...")
-	content, err := ioutil.ReadFile("./pkg/file_information/indexJS.txt")
-	if err != nil {
-		return err
+	if t == "javascript-express" {
+		content, err = ioutil.ReadFile("./pkg/file_information/js/index-express.txt")
+		if err != nil {
+			return err
+		}
+	} else if t == "javascript-mongoose" {
+		content, err = ioutil.ReadFile("./pkg/file_information/js/index-mongoose.txt")
+		if err != nil {
+			return err
+		}
 	}
 	err = ioutil.WriteFile(p+"/src/index.js", content, 0777)
 	if err != nil {

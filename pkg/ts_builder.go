@@ -106,11 +106,26 @@ func InitTsConfig(p string) ([]byte, error) {
 	return out, nil
 }
 
-func AppDataTS(p string) error {
+func AppDataTS(p string, t string) error {
+	var content []byte
+	var err error
+
 	fmt.Println("Configuring the app server...")
-	content, err := ioutil.ReadFile("./pkg/file_information/indexTS.txt")
-	if err != nil {
-		return err
+	if t == "typescript-express" {
+		content, err = ioutil.ReadFile("./pkg/file_information/js/index-express.txt")
+		if err != nil {
+			return err
+		}
+	} else if t == "typescript-mongoose" {
+		content, err = ioutil.ReadFile("./pkg/file_information/js/index-mongoose.txt")
+		if err != nil {
+			return err
+		}
+	} else if t == "typescript-typeORM" {
+		content, err = ioutil.ReadFile("./pkg/file_information/js/index-typeORM.txt")
+		if err != nil {
+			return err
+		}
 	}
 	err = ioutil.WriteFile(p+"/src/index.ts", content, 0777)
 	if err != nil {

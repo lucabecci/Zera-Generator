@@ -1,0 +1,69 @@
+import express, { Application, Response } from 'express'
+import morgan from 'morgan'
+import cors from 'cors'
+import {connection} from 'typeorm'
+class App{
+    private _app: Application
+    constructor(){
+        this._app = express()
+
+        this.initDatabase()
+        this.initConfig()
+        this.initRoutes()
+    }
+    private async initDatabase(): Promise<void>{
+        let retries = 5
+        while(retries){
+            try{
+                 await createConnection({
+                    type: "postgres", //your type of db, i use postgresql for the template
+                    host: "localhost",
+                    port: 5672,
+                    username: "postgres",
+                    password: "postgres",
+                    database: "yourapp"
+                    synchronize: true,
+                    logging: true,
+                    entities: [], //insert your entities
+                })
+                console.log('DB is connected')
+                break
+            }
+            catch(e){
+                retries -= 1;
+                console.log("retries:", retries);
+                await new Promise((res) => setTimeout(res, 5000));
+            }
+        }
+    }
+
+    private initConfig(): void{
+        this._app.use(express.urlencoded({extended: false}))
+        this._app.use(express.json())
+        this._app.use(morgan("dev"))
+        this._app.use(cors({
+            credentials: true
+        }))
+    }
+
+    private initRoutes(): void{
+        this._app.get('/', (_, res: Response) => {
+            res.status(200).json({
+                message: "Index path of the project",
+                builder: "Project Generator",
+                url_builder: "https://github.com/lucabecci/Project-Generator",
+                creator: "Luca Becci || Fullstack Developer || Argentina"
+            })
+        })
+    }
+
+    public run(): void{
+        this._app.listen(4000, () => {
+            console.log("Server on PORT", 4000)
+        })
+    }
+}
+
+
+const app = new App
+app.run()
