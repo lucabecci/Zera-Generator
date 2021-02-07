@@ -31,6 +31,21 @@ func CreateTypescriptExpress(p string) {
 	}
 	fmt.Println(Green(string(dev)))
 
+	out, err := pkg.InitTsConfig(p)
+	if err != nil {
+		fmt.Println(Red(string(err.Error())))
+	}
+	fmt.Println(Green(string(out)))
+
+	err = pkg.GitIgnoreData(p)
+	if err != nil {
+		fmt.Println(Red(string(err.Error())))
+	}
+	err = pkg.AppData(p)
+	if err != nil {
+		fmt.Println(Red(string(err.Error())))
+	}
+
 }
 
 func CreateTypescriptGQL() {

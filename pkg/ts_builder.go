@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os/exec"
 )
 
@@ -90,4 +91,41 @@ func DevDependencies(p string, t string) ([]byte, error) {
 		}
 	}
 	return out, nil
+}
+
+func InitTsConfig(p string) ([]byte, error) {
+	fmt.Println("Creating a ts config...")
+	cmd := exec.Command("tsc", "--init")
+	cmd.Dir = "./" + p
+	out, err := cmd.Output()
+	if err != nil {
+		return []byte{}, err
+	}
+	return out, nil
+}
+
+func GitIgnoreData(p string) error {
+	fmt.Println("Configuring the gitignore...")
+	content, err := ioutil.ReadFile("./pkg/file_information/.gitignore.txt")
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(p+"/.gitignore", content, 0777)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func AppData(p string) error {
+	fmt.Println("Configuring the app server...")
+	content, err := ioutil.ReadFile("./pkg/file_information/indexTS.txt")
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(p+"/src/index.ts", content, 0777)
+	if err != nil {
+		return err
+	}
+	return nil
 }
