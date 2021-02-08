@@ -43,7 +43,7 @@ func (s *Scanner) ProjectName() (string, error) {
 	}
 	//create project
 	cmd := exec.Command("mkdir", text)
-	cmd.Run()
+	_ = cmd.Run()
 	return text, nil
 }
 

@@ -2,7 +2,6 @@ package templates
 
 import (
 	"fmt"
-	"os"
 
 	. "github.com/logrusorgru/aurora/v3"
 	"github.com/lucabecci/project-generator/pkg"
@@ -11,46 +10,45 @@ import (
 func CreateJavascriptProject(p string, t string) {
 	build, err := pkg.InitializeJS(p)
 	if err != nil {
-		fmt.Println(Red(string(err.Error())))
-		fmt.Println(Red("Closing system..."))
-		os.Exit(1)
+		ErrorCreation(p, err)
+		return
 	}
 	fmt.Println(Green(string(build)))
 
 	err = pkg.StructureJS(p)
 	if err != nil {
-		fmt.Println(Red(string(err.Error())))
-		fmt.Println(Red("Closing system..."))
-		os.Exit(1)
+		ErrorCreation(p, err)
+		return
 	}
 
 	prod, err := pkg.DependenciesJS(p, t)
 	if err != nil {
-		fmt.Println(Red(string(err.Error())))
-		fmt.Println(Red("Closing system..."))
-		os.Exit(1)
+		ErrorCreation(p, err)
+		return
 	}
 	fmt.Println(Green(string(prod)))
 
 	dev, err := pkg.DevDependenciesJS(p, t)
 	if err != nil {
-		fmt.Println(Red(string(err.Error())))
-		fmt.Println(Red("Closing system..."))
-		os.Exit(1)
+		ErrorCreation(p, err)
+		return
 	}
 	fmt.Println(Green(string(dev)))
 
 	err = pkg.GitIgnoreData(p)
 	if err != nil {
-		fmt.Println(Red(string(err.Error())))
-		fmt.Println(Red("Closing system..."))
-		os.Exit(1)
+		ErrorCreation(p, err)
+		return
 	}
 	err = pkg.AppDataJS(p, t)
 	if err != nil {
-		fmt.Println(Red(string(err.Error())))
-		fmt.Println(Red("Closing system..."))
-		os.Exit(1)
+		ErrorCreation(p, err)
+		return
+	}
+	err = pkg.ReadmeInfo(p)
+	if err != nil {
+		ErrorCreation(p, err)
+		return
 	}
 	fmt.Println(Green("------------------------------------------------------"))
 	fmt.Println(Green("------------------------------------------------------"))

@@ -17,3 +17,15 @@ func GitIgnoreData(p string) error {
 	}
 	return nil
 }
+func ReadmeInfo(p string) error {
+	fmt.Println("Configuring the documentation...")
+	content, err := ioutil.ReadFile("./pkg/file_information/README.txt")
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(p+"/README.md", content, 0777)
+	if err != nil {
+		return err
+	}
+	return nil
+}

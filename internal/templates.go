@@ -39,18 +39,18 @@ func (t *Template) JavascriptMongoose() {
 }
 
 func (t *Template) Compare(s string) {
-	if s == "typescript-express" {
+	if s == "ts-express" {
 		t.TypescriptExpress()
-	} else if s == "javascript-express" {
+	} else if s == "js-express" {
 		t.JavascriptExpress()
-	} else if s == "typescript-gql" {
+	} else if s == "ts-gql" {
 		fmt.Println(Blue("SOON"))
 		os.Remove(t.project)
-	} else if s == "typescript-mongoose" {
+	} else if s == "ts-mongoose" {
 		t.TypescriptMongoose()
-	} else if s == "javascript-mongoose" {
+	} else if s == "js-mongoose" {
 		t.JavascriptMongoose()
-	} else if s == "typescript-typeORM" {
+	} else if s == "ts-typeORM" {
 		t.TypescriptTypeOrm()
 	} else {
 		fmt.Println(Red("Error to create your template"))
