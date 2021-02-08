@@ -6,6 +6,7 @@ import (
 	. "github.com/logrusorgru/aurora/v3"
 )
 
+//AboutMessage is for the principal message
 func AboutMessage() {
 	var title string = "JAVASCRIPT PROJECT GENERATOR by Luca Becci"
 	var description string = "Use the diferents names for the avalibles templates "

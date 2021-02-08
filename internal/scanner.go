@@ -11,10 +11,12 @@ import (
 	. "github.com/logrusorgru/aurora/v3"
 )
 
+//Scanner is a struct principal
 type Scanner struct {
 	reader bufio.Reader
 }
 
+//New is for generate a new scanner struct
 func New() *Scanner {
 	reader := bufio.NewReader(os.Stdin)
 	scanner := Scanner{
@@ -23,6 +25,7 @@ func New() *Scanner {
 	return &scanner
 }
 
+//Run is for run the project
 func (s *Scanner) Run() {
 	project, err := s.ProjectName()
 	if err != nil {
@@ -31,6 +34,7 @@ func (s *Scanner) Run() {
 	s.SelectTemplate(project)
 }
 
+//ProjectName is for the creation of the name
 func (s *Scanner) ProjectName() (string, error) {
 	fmt.Print(Magenta("Project Name:"))
 	fmt.Print(Magenta("->"))
@@ -47,6 +51,7 @@ func (s *Scanner) ProjectName() (string, error) {
 	return text, nil
 }
 
+//SelectTemplate is for select the template
 func (s *Scanner) SelectTemplate(p string) {
 	fmt.Print(Magenta("Template Name:"))
 	fmt.Print(Magenta("->"))
