@@ -5,7 +5,7 @@ import (
 	"os"
 
 	. "github.com/logrusorgru/aurora/v3"
-	"github.com/lucabecci/project-generator/internal/templates"
+	"github.com/lucabecci/zera-generator/internal/templates"
 )
 
 //Template is a struct principal

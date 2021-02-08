@@ -1,6 +1,6 @@
 package main
 
-import "github.com/lucabecci/project-generator/internal"
+import "github.com/lucabecci/zera-generator/internal"
 
 func main() {
 	internal.AboutMessage()

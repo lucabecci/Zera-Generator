@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os/exec"
 
-	"github.com/lucabecci/project-generator/pkg/dependencies"
+	"github.com/lucabecci/zera-generator/pkg/dependencies"
 )
 
 func InitializeJS(p string) ([]byte, error) {

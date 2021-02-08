@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	. "github.com/logrusorgru/aurora/v3"
-	"github.com/lucabecci/project-generator/pkg"
+	"github.com/lucabecci/zera-generator/pkg"
 )
 
 func CreateJavascriptProject(p string, t string) {

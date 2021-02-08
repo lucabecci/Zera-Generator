@@ -1,4 +1,4 @@
-module github.com/lucabecci/project-generator
+module github.com/lucabecci/zera-generator
 
 go 1.15
 
