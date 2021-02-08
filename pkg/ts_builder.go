@@ -41,7 +41,6 @@ func StructureTS(p string) error {
 		"src",
 		"src/routes",
 		"src/controllers",
-		"src/database",
 		"src/middlewares",
 		"src/helpers",
 	)
@@ -57,7 +56,6 @@ func StructureTS(p string) error {
 		"index.ts",
 		"controllers/index.controller.ts",
 		"routes/index.routes.ts",
-		"database/database.ts",
 		"middlewares/auth.ts",
 		"helpers/checks.ts",
 	)
@@ -73,8 +71,18 @@ func DependenciesTS(p string, t string) ([]byte, error) {
 	fmt.Println("Adding dependencies...")
 	var out []byte
 	var err error
-	if t == "ts-express" {
-		out, err = dependencies.DependenciesTsExpress(p)
+	if t == "typescript-express" {
+		out, err = dependencies.DependenciesTsExpress(p, t)
+		if err != nil {
+			return []byte{}, err
+		}
+	} else if t == "typescript-mongoose" {
+		out, err = dependencies.DependenciesTsExpress(p, t)
+		if err != nil {
+			return []byte{}, err
+		}
+	} else if t == "typescript-typeORM" {
+		out, err = dependencies.DependenciesTsExpress(p, t)
 		if err != nil {
 			return []byte{}, err
 		}
@@ -86,8 +94,18 @@ func DevDependenciesTS(p string, t string) ([]byte, error) {
 	fmt.Println("Adding dev-dependencies...")
 	var out []byte
 	var err error
-	if t == "ts-express" {
-		out, err = dependencies.DevDependenciesTsExpress(p)
+	if t == "typescript-express" {
+		out, err = dependencies.DevDependenciesTsExpress(p, t)
+		if err != nil {
+			return []byte{}, err
+		}
+	} else if t == "typescript-mongoose" {
+		out, err = dependencies.DevDependenciesTsExpress(p, t)
+		if err != nil {
+			return []byte{}, err
+		}
+	} else if t == "typescript-typeORM" {
+		out, err = dependencies.DevDependenciesTsExpress(p, t)
 		if err != nil {
 			return []byte{}, err
 		}
@@ -112,17 +130,17 @@ func AppDataTS(p string, t string) error {
 
 	fmt.Println("Configuring the app server...")
 	if t == "typescript-express" {
-		content, err = ioutil.ReadFile("./pkg/file_information/js/index-express.txt")
+		content, err = ioutil.ReadFile("./pkg/file_information/ts/index-express.txt")
 		if err != nil {
 			return err
 		}
 	} else if t == "typescript-mongoose" {
-		content, err = ioutil.ReadFile("./pkg/file_information/js/index-mongoose.txt")
+		content, err = ioutil.ReadFile("./pkg/file_information/ts/index-mongoose.txt")
 		if err != nil {
 			return err
 		}
 	} else if t == "typescript-typeORM" {
-		content, err = ioutil.ReadFile("./pkg/file_information/js/index-typeORM.txt")
+		content, err = ioutil.ReadFile("./pkg/file_information/ts/index-typeORM.txt")
 		if err != nil {
 			return err
 		}

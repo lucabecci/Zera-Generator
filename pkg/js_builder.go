@@ -41,7 +41,6 @@ func StructureJS(p string) error {
 		"src",
 		"src/routes",
 		"src/controllers",
-		"src/database",
 		"src/middlewares",
 		"src/helpers",
 	)
@@ -57,7 +56,6 @@ func StructureJS(p string) error {
 		"index.js",
 		"controllers/index.controller.js",
 		"routes/index.routes.js",
-		"database/database.js",
 		"middlewares/auth.js",
 		"helpers/checks.js",
 	)
@@ -92,6 +90,11 @@ func DevDependenciesJS(p string, t string) ([]byte, error) {
 	var out []byte
 	var err error
 	if t == "javascript-express" {
+		out, err = dependencies.DevDependenciesJsExpress(p, t)
+		if err != nil {
+			return []byte{}, err
+		}
+	} else if t == "javascript-mongoose" {
 		out, err = dependencies.DevDependenciesJsExpress(p, t)
 		if err != nil {
 			return []byte{}, err

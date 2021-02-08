@@ -44,15 +44,16 @@ func (t *Template) Compare(s string) {
 	} else if s == "javascript-express" {
 		t.JavascriptExpress()
 	} else if s == "typescript-gql" {
-
+		fmt.Println(Blue("SOON"))
+		os.Remove(t.project)
 	} else if s == "typescript-mongoose" {
 		t.TypescriptMongoose()
 	} else if s == "javascript-mongoose" {
 		t.JavascriptMongoose()
 	} else if s == "typescript-typeORM" {
-
+		t.TypescriptTypeOrm()
 	} else {
 		fmt.Println(Red("Error to create your template"))
-		os.Remove("./api")
+		os.Remove(t.project)
 	}
 }

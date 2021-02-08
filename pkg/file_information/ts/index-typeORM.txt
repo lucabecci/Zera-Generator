@@ -1,7 +1,7 @@
 import express, { Application, Response } from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
-import {connection} from 'typeorm'
+import {createConnection} from 'typeorm'
 class App{
     private _app: Application
     constructor(){
@@ -21,7 +21,7 @@ class App{
                     port: 5672,
                     username: "postgres",
                     password: "postgres",
-                    database: "yourapp"
+                    database: "yourapp",
                     synchronize: true,
                     logging: true,
                     entities: [], //insert your entities
