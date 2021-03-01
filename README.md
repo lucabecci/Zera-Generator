@@ -1,5 +1,3 @@
-
-
 <div align="center">
   <h1> ZERA PROJECT GENERATOR </h1>
 </div>
@@ -11,11 +9,13 @@
 </div>
 
 # Quick Start ⌨️
+
 ## Get the project:
 
 ```go
 git clone "https://github.com/lucabecci/zera-generator"
 ```
+
 ### Install all dependencies:
 
 ```go
@@ -25,7 +25,7 @@ go install cmd/main
 ### Build the program:
 
 ```go
-go buil cmd/main
+go build cmd/main
 ```
 
 ### Run the program:
@@ -37,17 +37,33 @@ go run ./main
 
 ./main
 ```
+
+## Run and build the program with the Makefile:
+
+### Build:
+
+```go
+make build
+```
+
+### Run:
+
+```go
+make run
+```
+
 # Templates 📂
 
 - Typescript
-    - Typescript-Express:  use ⇒ `ts-expres`
-    - Typescript-Mongoose:  use ⇒ `ts-mongoose`
-    - Typescript-TypeORM:  use ⇒ `ts-typeORM`
+  - Typescript-Express: use ⇒ `ts-expres`
+  - Typescript-Mongoose: use ⇒ `ts-mongoose`
+  - Typescript-TypeORM: use ⇒ `ts-typeORM`
 - Javascript
-    - Javascript-Express: use ⇒ `js-express`
-    - Javascript-Mongoose: use ⇒ `js-mongoose`
+  - Javascript-Express: use ⇒ `js-express`
+  - Javascript-Mongoose: use ⇒ `js-mongoose`
 - GraphQL
-    - SOON...
+  - SOON...
+
 # Pre-requeriments 🛠
 
 You will need this requeriments for good rendiment:
@@ -57,6 +73,10 @@ You will need this requeriments for good rendiment:
 # Project Structure 📂
 
 ```
+|-- .github
+    |-- workflows
+        |-- linter.yml
+        |-- build.yml
 |-- cmd
     |-- main
 |-- docs
@@ -88,27 +108,28 @@ You will need this requeriments for good rendiment:
     |-- ts_builder.go
 |-- .gitignore
 |-- Dockerfile
+|-- .dockerignore
 |-- go.mod
 |-- go.sum
 |-- LICENSE.md
+|-- Makefile
 |-- README.md
 ```
 
 # Build with 🛠
- - Golang
- - AuroraV3
- - GoLint
+
+- Golang
+- AuroraV3
+- GoLint
 
 # Versioned 1️⃣
 
 For the versioning, [ConventionalCommits] was used ([https://www.conventionalcommits.org/en/v1.0.0/](https://www.conventionalcommits.org/en/v1.0.0/))
 
-
 # Author 🙎🏻‍♂️
 
-***Luca Becci -** code and documentation*
+**\*Luca Becci -** code and documentation\*
 
 - [github](https://github.com/lucabecci)
 - [twitter](https://twitter.com/lucabecci)
 - [linkedin](https://www.linkedin.com/in/luca-becci-b8044b198/)
-
