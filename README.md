@@ -21,7 +21,7 @@ git clone "https://github.com/lucabecci/zera-generator"
 if you don't want to install go, you can use the bin file to run the program. You need to run:
 
 ```go
-make run-bin
+make run
 ```
 
 and the project will run on your console
