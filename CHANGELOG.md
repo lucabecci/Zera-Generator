@@ -1,3 +1,17 @@
+# 1.0.1 (2021-03-01 )
+
+## Release Highlights
+
+Fast run with bin added:
+
+- All information and configuration for bin run added
+
+## Features
+
+- fix(@all): Error in fast run description fixed
+- chore(@all): Doc edited and fast run added for the bin
+- chore(@all): build added for fast run
+
 # 1.0.0 (2021-03-01 )
 
 ## Release Highlights
