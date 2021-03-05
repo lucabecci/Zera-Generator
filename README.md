@@ -1,8 +1,7 @@
 <div align="center">
-  [![Build](https://github.com/lucabecci/Zera-Generator/actions/workflows/build.yml/badge.svg)](https://github.com/lucabecci/Zera-Generator/actions/workflows/build.yml)
   <h1> ZERA PROJECT GENERATOR </h1>
 </div>
-
+[![Build](https://github.com/lucabecci/Zera-Generator/actions/workflows/build.yml/badge.svg)](https://github.com/lucabecci/Zera-Generator/actions/workflows/build.yml)
 ![banner](docs/ZERA-BANNER.png)
 
 <div align="center">
